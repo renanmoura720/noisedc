@@ -4,7 +4,7 @@
 [![Data: CC BY 4.0](https://img.shields.io/badge/Dados-CC%20BY%204.0-lightgrey.svg)](LICENSE-DATA)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
 
-Código, documentação e resultados da dissertação de mestrado **"Arquitetura para monitoramento e detecção de anomalias acústicas em data centers"**, desenvolvida no Programa de Pós-Graduação em Tecnologia da Informação (PPgTI) do Instituto Metrópole Digital — Universidade Federal do Rio Grande do Norte (IMD/UFRN).
+Código, documentação e resultados da dissertação de mestrado **"Arquitetura para monitoramento e detecção de Anomalias Acústicas em Data Centers"**, desenvolvida no Programa de Pós-Graduação em Tecnologia da Informação (PPgTI) do Instituto Metrópole Digital — Universidade Federal do Rio Grande do Norte (IMD/UFRN).
 
 O trabalho investiga o uso do sinal acústico emitido por evaporadoras de climatização como indicador **complementar, não intrusivo e de baixo custo** de condições anômalas, e propõe uma arquitetura modular de quatro camadas avaliada em ambiente real de produção.
 
@@ -177,8 +177,8 @@ Se este trabalho for útil à sua pesquisa, cite a dissertação:
 ```bibtex
 @mastersthesis{silva2026noisedc,
   author       = {Silva, Renan Moura da},
-  title        = {Arquitetura para monitoramento e detec{\c{c}}{\~a}o de anomalias
-                  ac{\'u}sticas em data centers},
+  title        = {Arquitetura para monitoramento e detec{\c{c}}{\~a}o de Anomalias
+                  Ac{\'u}sticas em Data Centers},
   school       = {Universidade Federal do Rio Grande do Norte},
   address      = {Natal, RN, Brasil},
   year         = {2026},

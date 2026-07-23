@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 title: >-
   NoiseDC — Arquitetura para monitoramento e detecção de
-  anomalias acústicas em data centers
+  Anomalias Acústicas em Data Centers
 message: >-
   Se você utilizar este software, estes dados ou esta
   arquitetura, por favor cite a dissertação e o repositório
@@ -42,8 +42,8 @@ identifiers:
 preferred-citation:
   type: thesis
   title: >-
-    Arquitetura para monitoramento e detecção de anomalias
-    acústicas em data centers
+    Arquitetura para monitoramento e detecção de Anomalias
+    Acústicas em Data Centers
   authors:
     - given-names: Renan
       family-names: Moura da Silva
