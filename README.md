@@ -74,7 +74,7 @@ Os dados seguem o princípio **"código no GitHub, dados no Drive"**. O reposit�
 | `metadados_processados.csv` | 2.818 linhas | Este repositório (`data/processed/`) | Público |
 | Evidências de rotulagem das anomalias | — | Google Drive | Restrito |
 
-**Repositório de dados:** <!-- INSERIR LINK DO GOOGLE DRIVE -->
+**Repositório de dados:** https://drive.google.com/drive/folders/1zBukFjDRg2DViqPRWUf5W-6vlwrvmHxX?usp=sharing
 **DOI do conjunto de dados:** <!-- INSERIR DOI DO ZENODO -->
 
 O dicionário de dados e o mapeamento completo entre repositório e Drive estão em [`data/README.md`](data/README.md) e [`docs/dicionario-de-dados.md`](docs/dicionario-de-dados.md).
