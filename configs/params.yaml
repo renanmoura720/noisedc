@@ -1,11 +1,65 @@
 # Parâmetros efetivamente utilizados nos experimentos reportados na dissertação.
 # Este arquivo é versionado e não deve ser editado: qualquer variação deve gerar
 # um novo arquivo (ex.: params-exp02.yaml), preservando a rastreabilidade.
+#
+# ATENÇÃO — hiperparâmetros de modelos (2026-07-23): os valores abaixo foram
+# confirmados por execução real do script autoritativo
+# (src/noisedc/legado/camada3_autoritativo_linha_c.py) sobre o
+# features_segmentos.csv real, comparando a saída casa a casa com as Tabelas
+# 12, 13 e 14 do Capítulo 5. Eles DIVERGEM da Tabela 9 do texto da
+# dissertação, que ficou desatualizada. Ver:
+# docs/PENDENCIA-hiperparametros-camada3.md
 heranca: config.example.yaml
 experimento: dissertacao-v1
 data_execucao: '2026-07-15'
+data_verificacao_hiperparametros: '2026-07-23'
+
 conjunto:
   gravacoes: 96
   segmentos_total: 2818
   segmentos_coorte_binaria: 2039
+  segmentos_normal: 1749
+  segmentos_anomalia: 290
   unidades: [EV09, EV10, EV11, EV12, EV13, EV14]
+  unidades_com_anomalia: [EV09, EV11]
+  unidades_apenas_standby: [EV13]  # sem segmentos OK/ANOMALIA; fora da coorte binária
+
+modelos:
+  # Valores CONFIRMADOS pela execução real (ver docs/PENDENCIA-...).
+  # Divergem da Tabela 9 do texto — usar estes para reproduzir os
+  # resultados publicados nas Tabelas 12-14.
+  svm:
+    kernel: rbf
+    C: 10
+    class_weight: balanced
+    probability: true
+    # nota: SVC(probability=True) faz calibração de Platt com CV interna sem
+    # random_state fixo no script original — espere variação de ±0,005 no
+    # AUC entre execuções.
+  floresta_aleatoria:
+    n_estimators: 400
+    class_weight: balanced
+    random_state: 42
+  one_class_svm:
+    kernel: rbf
+    gamma: scale
+    nu: 0.1
+    treino: apenas_normal
+  baseline:
+    tipo: melhor_caracteristica_por_dobra
+    # NÃO é limiar de energia em banda fixa (diferente do que a Tabela 9
+    # descreve em prosa). Para cada dobra do leave-one-unit-out, escolhe a
+    # característica de maior |AUC-0,5| no treino entre as 60 dimensões do
+    # descritor, e aplica o limiar de Youden sobre ela.
+
+resultados_confirmados:
+  # Tabela 12 — leave-one-unit-out, nível de segmento
+  leave_one_unit_out_segmento:
+    baseline:  {acuracia: 0.655, precisao: 0.000, recall: 0.000, f1: 0.000, auc: 0.428, fpr: 0.236}
+    svm:       {acuracia: 0.848, precisao: 0.000, recall: 0.000, f1: 0.000, auc: 0.534, fpr: 0.011}
+    floresta_aleatoria: {acuracia: 0.857, precisao: 0.000, recall: 0.000, f1: 0.000, auc: 0.505, fpr: 0.001}
+    one_class_svm: {acuracia: 0.775, precisao: 0.281, recall: 0.372, f1: 0.320, auc: 0.609, fpr: 0.158}
+  # Tabela 13 — leave-one-recording-out (intra-distribuição)
+  leave_one_recording_out:
+    svm: {auc_segmento: 0.990, auc_gravacao: 0.998}
+    floresta_aleatoria: {auc_segmento: 0.986, auc_gravacao: 1.000}
