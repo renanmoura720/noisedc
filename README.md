@@ -2,11 +2,21 @@
 
 [![License: MIT](https://img.shields.io/badge/Código-MIT-blue.svg)](LICENSE)
 [![Data: CC BY 4.0](https://img.shields.io/badge/Dados-CC%20BY%204.0-lightgrey.svg)](LICENSE-DATA)
+<!-- Badge do DOI: descomente e atualize a URL quando o Zenodo estiver conectado.
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+-->
 
 Código, documentação e resultados da dissertação de mestrado **"Arquitetura para monitoramento e detecção de Anomalias Acústicas em Data Centers"**, desenvolvida no Programa de Pós-Graduação em Tecnologia da Informação (PPgTI) do Instituto Metrópole Digital — Universidade Federal do Rio Grande do Norte (IMD/UFRN).
 
 O trabalho investiga o uso do sinal acústico emitido por evaporadoras de climatização como indicador **complementar, não intrusivo e de baixo custo** de condições anômalas, e propõe uma arquitetura modular de quatro camadas avaliada em ambiente real de produção.
+
+> ### 🔗 Links rápidos
+> | | |
+> |---|---|
+> | 🎧 **Dados brutos e processados** | [Google Drive](https://drive.google.com/drive/folders/1zBukFjDRg2DViqPRWUf5W-6vlwrvmHxX?usp=sharing) |
+> | 📄 **Dissertação completa** | Repositório Institucional da UFRN *(link a inserir após o depósito)* |
+> | 📊 **Resultados e figuras** | [`results/`](results/) |
+> | 🐛 **Dúvidas ou problemas** | [Abrir uma issue](../../issues) |
 
 ---
 
