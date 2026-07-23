@@ -1,0 +1,11 @@
+# Parâmetros efetivamente utilizados nos experimentos reportados na dissertação.
+# Este arquivo é versionado e não deve ser editado: qualquer variação deve gerar
+# um novo arquivo (ex.: params-exp02.yaml), preservando a rastreabilidade.
+heranca: config.example.yaml
+experimento: dissertacao-v1
+data_execucao: '2026-07-15'
+conjunto:
+  gravacoes: 96
+  segmentos_total: 2818
+  segmentos_coorte_binaria: 2039
+  unidades: [AC09, AC10, AC11, AC12, AC13, AC14]

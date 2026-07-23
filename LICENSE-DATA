@@ -1,0 +1,32 @@
+Licença dos dados, figuras, documentação e resultados
+=====================================================
+
+Todo o conteúdo NÃO-SOFTWARE deste projeto — conjunto de dados acústicos,
+espectrogramas, vetores de características, metadados, tabelas de resultados,
+figuras e documentação — está licenciado sob a
+
+    Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Texto integral da licença: https://creativecommons.org/licenses/by/4.0/legalcode.pt
+Resumo para leigos:        https://creativecommons.org/licenses/by/4.0/deed.pt
+
+Você tem liberdade para compartilhar e adaptar este material, inclusive para
+fins comerciais, desde que atribua o crédito apropriado, forneça um link para a
+licença e indique se mudanças foram feitas.
+
+Atribuição sugerida
+-------------------
+SILVA, Renan Moura da. Arquitetura para monitoramento e detecção de anomalias
+acústicas em data centers. Dissertação (Mestrado em Tecnologia da Informação) —
+Instituto Metrópole Digital, Universidade Federal do Rio Grande do Norte,
+Natal, 2026. Conjunto de dados disponível em: <URL>. Licenciado sob CC BY 4.0.
+
+Observações
+-----------
+1. O código-fonte é licenciado separadamente sob a Licença MIT (ver LICENSE).
+2. O texto integral da dissertação segue os termos de depósito do Repositório
+   Institucional da UFRN.
+3. As gravações foram realizadas em ambiente de infraestrutura de terceiros
+   (Data Center do IMD/UFRN) com autorização institucional. O uso dos dados não
+   implica autorização para acesso, engenharia reversa ou inferência sobre a
+   infraestrutura da instituição.

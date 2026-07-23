@@ -1,0 +1,343 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_ZABBIX",
+      "label": "Zabbix",
+      "description": "Fonte de dados Zabbix. Selecione a sua na importacao.",
+      "type": "datasource",
+      "pluginId": "alexanderzobnin-zabbix-datasource"
+    }
+  ],
+  "title": "NoiseDC — Monitoramento Acustico da Linha C",
+  "description": "Painel da Camada 4. Reune o estado acustico das evaporadoras, o grau de confianca das classificacoes e as metricas SNMP correlacionadas, permitindo avaliar um indicio acustico a luz do contexto operacional. EXPORTACAO SANITIZADA: substitua os marcadores <...> apos a importacao.",
+  "tags": [
+    "noisedc",
+    "acustico",
+    "datacenter"
+  ],
+  "timezone": "browser",
+  "editable": true,
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "1m",
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  },
+  "templating": {
+    "list": [
+      {
+        "name": "equipamento",
+        "label": "Evaporadora",
+        "type": "custom",
+        "query": "<HOST_AC09>,<HOST_AC10>,<HOST_AC11>,<HOST_AC12>,<HOST_AC13>,<HOST_AC14>",
+        "multi": true,
+        "includeAll": true,
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        }
+      }
+    ]
+  },
+  "annotations": {
+    "list": [
+      {
+        "name": "Eventos de anomalia",
+        "datasource": {
+          "uid": "${DS_ZABBIX}"
+        },
+        "enable": true,
+        "iconColor": "red",
+        "target": {
+          "application": "",
+          "group": "<GRUPO_HOSTS>",
+          "host": "/.*/",
+          "trigger": "/acustic|Padrao acustico/"
+        }
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "stat",
+      "title": "Estado acustico atual",
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "datasource": {
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "0 = normal, 1 = anomalo. Uma unidade sem dados recentes aparece como N/A.",
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "type": "value",
+              "options": {
+                "0": {
+                  "text": "Normal",
+                  "color": "green",
+                  "index": 0
+                },
+                "1": {
+                  "text": "Anomalo",
+                  "color": "red",
+                  "index": 1
+                }
+              }
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "textMode": "value_and_name",
+        "orientation": "horizontal"
+      },
+      "targets": [
+        {
+          "queryType": "0",
+          "group": {
+            "filter": "<GRUPO_HOSTS>"
+          },
+          "host": {
+            "filter": "$equipamento"
+          },
+          "item": {
+            "filter": "Estado acustico"
+          },
+          "functions": [
+            {
+              "def": {
+                "name": "last"
+              },
+              "params": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "timeseries",
+      "title": "Estado acustico ao longo do tempo",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 5
+      },
+      "datasource": {
+        "uid": "${DS_ZABBIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "min": 0,
+          "max": 1,
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "stepAfter",
+            "fillOpacity": 20,
+            "lineWidth": 2
+          }
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "queryType": "0",
+          "group": {
+            "filter": "<GRUPO_HOSTS>"
+          },
+          "host": {
+            "filter": "$equipamento"
+          },
+          "item": {
+            "filter": "Estado acustico"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "timeseries",
+      "title": "Confianca da classificacao",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 5
+      },
+      "datasource": {
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "Patamar de 0,80 marcado como referencia: abaixo dele o gatilho nao escala a severidade, para reduzir alarmes espurios provocados por eventos sonoros transitorios.",
+      "fieldConfig": {
+        "defaults": {
+          "min": 0,
+          "max": 1,
+          "unit": "percentunit",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 0.8
+              },
+              {
+                "color": "red",
+                "value": 0.95
+              }
+            ]
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 2,
+            "fillOpacity": 10,
+            "thresholdsStyle": {
+              "mode": "line"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "queryType": "0",
+          "group": {
+            "filter": "<GRUPO_HOSTS>"
+          },
+          "host": {
+            "filter": "$equipamento"
+          },
+          "item": {
+            "filter": "Confianca da classificacao"
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "Temperatura de retorno (SNMP)",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 13
+      },
+      "datasource": {
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "Metrica convencional coletada por template SNMP proprio. Alinhada no tempo com o estado acustico, permite verificar se um indicio sonoro e acompanhado de variacao termica.",
+      "fieldConfig": {
+        "defaults": {
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "queryType": "0",
+          "group": {
+            "filter": "<GRUPO_HOSTS>"
+          },
+          "host": {
+            "filter": "$equipamento"
+          },
+          "item": {
+            "filter": "<ITEM_TEMPERATURA_SNMP>"
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "timeseries",
+      "title": "Carga da unidade (SNMP)",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 13
+      },
+      "datasource": {
+        "uid": "${DS_ZABBIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "queryType": "0",
+          "group": {
+            "filter": "<GRUPO_HOSTS>"
+          },
+          "host": {
+            "filter": "$equipamento"
+          },
+          "item": {
+            "filter": "<ITEM_CARGA_SNMP>"
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "table",
+      "title": "Historico de eventos acusticos",
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 21
+      },
+      "datasource": {
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "Visao cronologica para acompanhar os eventos e sua severidade.",
+      "targets": [
+        {
+          "queryType": "5",
+          "group": {
+            "filter": "<GRUPO_HOSTS>"
+          },
+          "host": {
+            "filter": "$equipamento"
+          },
+          "options": {
+            "limit": 100,
+            "sortProblems": "lastchange"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+# NoiseDC — dependências (fixe as versões com pip freeze após validar o ambiente)
+numpy==1.26.4
+scipy==1.13.1
+librosa==0.10.2
+soundfile==0.12.1
+scikit-learn==1.5.1
+pandas==2.2.2
+matplotlib==3.9.1
+joblib==1.4.2
+pyyaml==6.0.1
+python-dotenv==1.0.1
+tqdm==4.66.4
+
+# desenvolvimento
+pytest==8.2.2
+ruff==0.5.5
+nbstripout==0.7.1

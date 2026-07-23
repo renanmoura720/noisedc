@@ -1,0 +1,60 @@
+cff-version: 1.2.0
+title: >-
+  NoiseDC — Arquitetura para monitoramento e detecção de
+  anomalias acústicas em data centers
+message: >-
+  Se você utilizar este software, estes dados ou esta
+  arquitetura, por favor cite a dissertação e o repositório
+  conforme os metadados abaixo.
+type: software
+authors:
+  - given-names: Renan
+    family-names: Moura da Silva
+    email: renan.moura@imd.ufrn.br
+    affiliation: Universidade Federal do Rio Grande do Norte
+    orcid: 'https://orcid.org/0000-0000-0000-0000'
+repository-code: 'https://github.com/USUARIO/noisedc'
+url: 'https://github.com/USUARIO/noisedc'
+abstract: >-
+  Arquitetura modular de quatro camadas para monitoramento
+  acústico não intrusivo e detecção de anomalias em sistemas
+  de refrigeração de data centers, composta por aquisição
+  por dispositivo IoT de baixo custo, pré-processamento e
+  extração de características (STFT, espectrograma Mel e
+  MFCC), análise por aprendizado de máquina e integração com
+  sistemas abertos de monitoramento e alerta.
+keywords:
+  - monitoramento acústico
+  - data centers
+  - detecção de anomalias
+  - aprendizado de máquina
+  - MFCC
+  - Internet das Coisas
+  - Zabbix
+  - manutenção preditiva
+license: MIT
+version: 1.0.0
+date-released: '2026-07-15'
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.XXXXXXX
+    description: DOI do repositório arquivado no Zenodo
+preferred-citation:
+  type: thesis
+  title: >-
+    Arquitetura para monitoramento e detecção de anomalias
+    acústicas em data centers
+  authors:
+    - given-names: Renan
+      family-names: Moura da Silva
+      affiliation: Universidade Federal do Rio Grande do Norte
+  thesis-type: Dissertação de Mestrado
+  institution:
+    name: >-
+      Universidade Federal do Rio Grande do Norte, Instituto
+      Metrópole Digital, Programa de Pós-Graduação em
+      Tecnologia da Informação
+  year: 2026
+  month: 7
+  languages:
+    - por

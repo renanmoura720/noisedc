@@ -1,0 +1,82 @@
+# =============================================================
+# NoiseDC — parâmetros do pipeline (MODELO)
+# Copie para configs/config.yaml. Segredos ficam apenas no .env.
+# =============================================================
+
+projeto:
+  nome: noisedc
+  seed: 42
+
+aquisicao:            # Camada 1
+  taxa_amostragem_hz: 22050
+  canais: 1
+  profundidade_bits: 16
+  duracao_gravacao_s: 60
+  formato: wav
+
+preprocessamento:     # Camada 2
+  normalizacao_rms_alvo: 0.1
+  subtracao_espectral:
+    habilitada: true
+    usar_gravacao_referencia: true
+    fator_super_subtracao: 1.0
+    piso_espectral: 0.02
+  segmentacao:
+    janela_s: 2.0
+    sobreposicao: 0.5
+
+caracteristicas:      # Camada 2
+  n_fft: 2048
+  hop_length: 512
+  janela: hann
+  n_mels: 128
+  n_mfcc: 20
+  incluir_deltas: true          # 20 MFCC + 20 deltas = 40 valores por quadro
+  salvar_espectrogramas: true
+
+modelos:              # Camada 3
+  padronizacao: zscore          # ajustada apenas na partição de treino
+  baseline:
+    caracteristica: energia_espectral_banda
+    # Faixa diagnóstica em Hz. O valor abaixo é o padrão do código; substitua
+    # pela faixa efetivamente reportada na Tabela 9 da dissertação. A literatura
+    # associa alterações de ventiladores e rolamentos à região de 1 a 5 kHz.
+    banda_hz: [1000.0, 5000.0]
+    criterio_limiar: f1
+  svm:
+    kernel: rbf
+    C: 1.0
+    gamma: scale
+    class_weight: balanced
+  floresta_aleatoria:
+    n_estimators: 100
+    max_depth: null
+    max_features: sqrt
+  one_class_svm:
+    kernel: rbf
+    nu: 0.5
+    gamma: scale
+    treino: apenas_normal
+
+avaliacao:            # Camada 3
+  protocolos:
+    - leave-one-unit-out
+    - leave-one-recording-out
+  niveis_agregacao:
+    - segmento
+    - gravacao
+  metricas:
+    - acuracia
+    - precisao
+    - recall
+    - f1
+    - auc
+    - taxa_falsos_positivos
+  salvar_matriz_confusao: true
+
+integracao:           # Camada 4 — endereços e tokens vêm do .env
+  habilitada: false
+  confianca_minima: 0.80
+  mapeamento_estado:
+    normal: 0
+    anomalia: 1

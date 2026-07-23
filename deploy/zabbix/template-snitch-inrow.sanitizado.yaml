@@ -1,0 +1,147 @@
+# =============================================================================
+# Template Zabbix — snitch-InRow
+#
+# Encapsula os itens acústicos, os gatilhos de anomalia e as severidades da
+# Camada 4. Vinculado ao host de cada evaporadora, todo o conjunto de
+# configuração é herdado sem reconfiguração individual: incorporar um novo
+# ativo reduz-se a registrar o host e vincular este template.
+#
+# EXPORTAÇÃO SANITIZADA. Substitua os marcadores <...> pelos valores do seu
+# ambiente após a importação. Não versione o arquivo com valores reais.
+#
+# Importação:  Data collection > Templates > Import
+# =============================================================================
+zabbix_export:
+  version: '6.0'
+  template_groups:
+    - uuid: '00000000000000000000000000000001'
+      name: 'Templates/Monitoramento Acustico'
+  templates:
+    - uuid: '00000000000000000000000000000002'
+      template: 'snitch-InRow'
+      name: 'snitch-InRow — monitoramento acustico'
+      description: |
+        Monitoramento acustico nao intrusivo de evaporadoras InRow.
+        Recebe o estado e o grau de confianca produzidos pela Camada 3 da
+        arquitetura NoiseDC, enviados por zabbix_sender.
+
+        Referencia: SILVA, R. M. Arquitetura para monitoramento e deteccao de
+        anomalias acusticas em data centers. Dissertacao (Mestrado) —
+        IMD/UFRN, 2026.
+      groups:
+        - name: 'Templates/Monitoramento Acustico'
+      items:
+        - uuid: '00000000000000000000000000000010'
+          name: 'Estado acustico'
+          type: TRAP
+          key: acustico.estado
+          value_type: UNSIGNED
+          description: |
+            0 = operacao normal
+            1 = condicao anomala
+            Valor produzido pelo classificador da Camada 3 e consolidado em
+            nivel de gravacao.
+          valuemap:
+            name: 'Estado acustico'
+          tags:
+            - tag: component
+              value: acustico
+        - uuid: '00000000000000000000000000000011'
+          name: 'Confianca da classificacao'
+          type: TRAP
+          key: acustico.confianca
+          value_type: FLOAT
+          description: |
+            Grau de confianca da decisao, em [0, 1]. Usado pelos gatilhos para
+            suprimir alarmes espurios provocados por eventos sonoros
+            transitorios.
+          tags:
+            - tag: component
+              value: acustico
+        - uuid: '00000000000000000000000000000012'
+          name: 'Idade da ultima amostra acustica'
+          type: CALCULATED
+          key: acustico.idade
+          value_type: UNSIGNED
+          units: s
+          params: 'nodata(/snitch-InRow/acustico.estado,1h)'
+          description: |
+            Detecta silencio do coletor. Um dispositivo que parou de enviar e
+            indistinguivel de um equipamento sem anomalia, e essa ambiguidade
+            precisa gerar alerta propria.
+          tags:
+            - tag: component
+              value: disponibilidade
+      valuemaps:
+        - uuid: '00000000000000000000000000000020'
+          name: 'Estado acustico'
+          mappings:
+            - value: '0'
+              newvalue: Normal
+            - value: '1'
+              newvalue: Anomalo
+      triggers:
+        - uuid: '00000000000000000000000000000030'
+          expression: |
+            last(/snitch-InRow/acustico.estado)=1
+            and last(/snitch-InRow/acustico.confianca)>=0.95
+          name: 'Padrao acustico incompativel com a operacao normal'
+          priority: HIGH
+          description: |
+            Padrao acustico incompativel com a operacao normal ou associado a
+            comportamento instavel. Acao recomendada: inspecao presencial da
+            unidade e verificacao das metricas SNMP correlacionadas.
+          manual_close: 'YES'
+        - uuid: '00000000000000000000000000000031'
+          expression: |
+            last(/snitch-InRow/acustico.estado)=1
+            and last(/snitch-InRow/acustico.confianca)>=0.80
+            and last(/snitch-InRow/acustico.confianca)<0.95
+          name: 'Alteracao perceptivel no padrao acustico'
+          priority: AVERAGE
+          description: |
+            Alteracao perceptivel em relacao ao padrao esperado de
+            funcionamento. Acao recomendada: acompanhar a evolucao e correlacionar
+            com temperatura e carga.
+        - uuid: '00000000000000000000000000000032'
+          expression: |
+            last(/snitch-InRow/acustico.estado)=1
+            and last(/snitch-InRow/acustico.confianca)<0.80
+          name: 'Variacao acustica leve'
+          priority: WARNING
+          description: |
+            Variacao acustica leve, sem indicacao de falha ou instabilidade.
+            Registrada para historico; nao exige acao imediata.
+        - uuid: '00000000000000000000000000000033'
+          expression: 'nodata(/snitch-InRow/acustico.estado,2h)=1'
+          name: 'Sem dados acusticos ha mais de 2 horas'
+          priority: AVERAGE
+          description: |
+            O coletor parou de enviar. Verificar alimentacao, conectividade e
+            espaco em disco do dispositivo.
+      macros:
+        - macro: '{$ACUSTICO.CONFIANCA.MIN}'
+          value: '0.80'
+          description: 'Patamar minimo de confianca para disparo dos gatilhos'
+        - macro: '{$ACUSTICO.SEM_DADOS}'
+          value: '2h'
+          description: 'Janela sem dados que caracteriza coletor inativo'
+      tags:
+        - tag: arquitetura
+          value: noisedc
+        - tag: camada
+          value: '4'
+
+# -----------------------------------------------------------------------------
+# Depois da importacao, preencher no seu ambiente:
+#
+#   - hosts das evaporadoras                  <HOST_ACxx>
+#   - endereco do servidor Zabbix             <ZABBIX_SERVER>
+#   - acoes de notificacao e destinatarios    <EMAIL_EQUIPE>
+#   - template SNMP das placas de gerencia    <TEMPLATE_SNMP_APC>
+#
+# As metricas convencionais (temperatura, carga, parametros eletricos) sao
+# coletadas por template SNMP proprio, operando de forma desacoplada no mesmo
+# host. Reunir as duas naturezas de informacao sob o mesmo host e o que permite
+# avaliar um indicio acustico a luz do contexto operacional.
+# -----------------------------------------------------------------------------
