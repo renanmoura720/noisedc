@@ -44,10 +44,10 @@ alerta próprio.
 ```bash
 # simulação: mostra o que seria enviado, sem enviar
 python -m noisedc.integration.run \
-    --audio data/raw/AC11/2026-03-12_1430_normal.wav \
-    --referencia data/raw/AC11/2026-03-12_1430_referencia.wav \
+    --audio data/raw/EV11/2026-03-12_1430_normal.wav \
+    --referencia data/raw/EV11/2026-03-12_1430_referencia.wav \
     --modelo results/models/floresta_aleatoria.joblib \
-    --equipamento AC11
+    --equipamento EV11
 
 # envio efetivo, com .env preenchido
 python -m noisedc.integration.run --audio ... --enviar

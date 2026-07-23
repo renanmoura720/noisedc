@@ -20,14 +20,14 @@ def test_copia_arquivos_wav_de_pasta_local(tmp_path):
 
 
 def test_registrar_metadados_cria_planilha_com_cabecalho(tmp_path):
-    pasta = tmp_path / "AC11"
+    pasta = tmp_path / "EV11"
     pasta.mkdir()
     arquivos = [pasta / "g1.wav", pasta / "g2.wav"]
     for a in arquivos:
         a.touch()
 
     planilha = registrar_metadados(
-        pasta, arquivos, equipamento="AC11", estado="normal", sessao="2026-03-12_1400"
+        pasta, arquivos, equipamento="EV11", estado="normal", sessao="2026-03-12_1400"
     )
 
     conteudo = planilha.read_text(encoding="utf-8")
@@ -36,13 +36,13 @@ def test_registrar_metadados_cria_planilha_com_cabecalho(tmp_path):
 
 
 def test_registrar_metadados_nao_duplica_registros(tmp_path):
-    pasta = tmp_path / "AC11"
+    pasta = tmp_path / "EV11"
     pasta.mkdir()
     arquivo = pasta / "g1.wav"
     arquivo.touch()
 
-    registrar_metadados(pasta, [arquivo], equipamento="AC11", estado="normal", sessao="s1")
-    planilha = registrar_metadados(pasta, [arquivo], equipamento="AC11", estado="normal", sessao="s1")
+    registrar_metadados(pasta, [arquivo], equipamento="EV11", estado="normal", sessao="s1")
+    planilha = registrar_metadados(pasta, [arquivo], equipamento="EV11", estado="normal", sessao="s1")
 
     linhas = planilha.read_text(encoding="utf-8").strip().splitlines()
     assert len(linhas) == 2  # cabeçalho + 1 registro, sem duplicar

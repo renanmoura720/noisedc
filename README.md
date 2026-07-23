@@ -35,7 +35,7 @@ O trabalho investiga o uso do sinal acústico emitido por evaporadoras de climat
 | **3. Aprendizado de máquina** | Classificação do estado operacional | Vetores MFCC → rótulo + grau de confiança | [`src/noisedc/models/`](src/noisedc/models), [`src/noisedc/evaluation/`](src/noisedc/evaluation) |
 | **4. Integração e alertas** | Ingestão, gatilhos, severidade, notificação e correlação com métricas SNMP | Estado + confiança → eventos, alertas e histórico | [`src/noisedc/integration/`](src/noisedc/integration), [`deploy/`](deploy) |
 
-**Ambiente experimental:** seis evaporadoras APC InRow RD (AC09–AC14), Corredor C do Data Center do IMD/UFRN.
+**Ambiente experimental:** seis evaporadoras APC InRow RD (EV09–EV14), Corredor C do Data Center do IMD/UFRN.
 
 **Parâmetros do pipeline:** áudio mono, 22.050 Hz, 16 bits; janelas de 2 s com 50% de sobreposição; `NFFT = 2048`; `hop = 512`; janela de Hann; 128 filtros Mel; 20 MFCC + 20 deltas (40 valores por quadro).
 
@@ -74,7 +74,7 @@ Os dados seguem o princípio **"código no GitHub, dados no Drive"**. O reposit�
 | `metadados_processados.csv` | 2.818 linhas | Este repositório (`data/processed/`) | Público |
 | Evidências de rotulagem das anomalias | — | Google Drive | Restrito |
 
-**Repositório de dados:** https://drive.google.com/drive/folders/1zBukFjDRg2DViqPRWUf5W-6vlwrvmHxX?usp=sharing
+**Repositório de dados:** <!-- INSERIR LINK DO GOOGLE DRIVE -->
 **DOI do conjunto de dados:** <!-- INSERIR DOI DO ZENODO -->
 
 O dicionário de dados e o mapeamento completo entre repositório e Drive estão em [`data/README.md`](data/README.md) e [`docs/dicionario-de-dados.md`](docs/dicionario-de-dados.md).

@@ -10,7 +10,7 @@ um ambiente de produção por engano ao seguir o README.
 
 Uso::
 
-    python -m noisedc.integration.run --audio data/raw/AC11/2026-03-12_1430_normal.wav
+    python -m noisedc.integration.run --audio data/raw/EV11/2026-03-12_1430_normal.wav
     python -m noisedc.integration.run --audio ... --modelo results/models/svm.joblib --enviar
 """
 
@@ -92,7 +92,7 @@ def principal(argv: list[str] | None = None) -> int:
     parser.add_argument("--audio", required=True, help="arquivo .wav a classificar")
     parser.add_argument("--referencia", default=None, help="gravação de referência da sessão")
     parser.add_argument("--modelo", default=None, help="modelo .joblib a utilizar")
-    parser.add_argument("--equipamento", default=None, help="host no Zabbix (ex.: AC11)")
+    parser.add_argument("--equipamento", default=None, help="host no Zabbix (ex.: EV11)")
     parser.add_argument("--config", default=None)
     parser.add_argument(
         "--enviar",

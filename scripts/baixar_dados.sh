@@ -25,9 +25,9 @@ Conjunto de dados NoiseDC
 
 Estrutura esperada após a extração:
 
-     data/raw/AC09/2026-03-12_1430_normal.wav
-     data/raw/AC09/2026-03-12_1430_referencia.wav
-     data/raw/AC09/metadados.csv
+     data/raw/EV09/2026-03-12_1430_normal.wav
+     data/raw/EV09/2026-03-12_1430_referencia.wav
+     data/raw/EV09/metadados.csv
      ...
 
 Para experimentar o pipeline sem os dados reais:

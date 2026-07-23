@@ -11,8 +11,8 @@ experimentos foram conduzidos.
 
 Uso::
 
-    python -m noisedc.acquisition.transferir --equipamento AC11 --estado normal
-    python -m noisedc.acquisition.transferir --equipamento AC11 --origem-local /media/pendrive
+    python -m noisedc.acquisition.transferir --equipamento EV11 --estado normal
+    python -m noisedc.acquisition.transferir --equipamento EV11 --origem-local /media/pendrive
 """
 
 from __future__ import annotations
@@ -133,7 +133,7 @@ def registrar_metadados(
 
 def principal(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Camada 1 — transferência e registro")
-    parser.add_argument("--equipamento", required=True, help="identificador da unidade (ex.: AC11)")
+    parser.add_argument("--equipamento", required=True, help="identificador da unidade (ex.: EV11)")
     parser.add_argument("--estado", required=True, choices=ESTADOS)
     parser.add_argument("--sessao", default=None, help="identificador da sessão de coleta")
     parser.add_argument("--referencia", default="", help="arquivo de referência da sessão")

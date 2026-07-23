@@ -35,7 +35,7 @@ def test_matriz_de_confusao_tem_rotulos():
 
 def test_leave_one_unit_out_isola_a_unidade():
     y = np.array([0, 1, 0, 1, 0, 1])
-    grupos = np.array(["AC09", "AC09", "AC10", "AC10", "AC11", "AC11"])
+    grupos = np.array(["EV09", "EV09", "EV10", "EV10", "EV11", "EV11"])
     gravacoes = np.array(["g1", "g1", "g2", "g2", "g3", "g3"])
 
     for nome, treino, teste in particoes("leave-one-unit-out", y, grupos, gravacoes):

@@ -52,7 +52,7 @@ A evidência de cada rotulagem é preservada no repositório de dados restrito.
 ```bash
 # transferência do dispositivo e registro dos metadados
 python -m noisedc.acquisition.transferir \
-    --equipamento AC11 \
+    --equipamento EV11 \
     --estado normal \
     --referencia 2026-03-12_1430_referencia.wav \
     --observacoes "coleta de rotina, corredor sem intervencao"
@@ -61,7 +61,7 @@ python -m noisedc.acquisition.transferir \
 ## Estrutura resultante
 
 ```
-data/raw/AC11/
+data/raw/EV11/
 ├── 2026-03-12_1430_normal.wav
 ├── 2026-03-12_1430_referencia.wav
 ├── 2026-03-12_1600_anomalia.wav

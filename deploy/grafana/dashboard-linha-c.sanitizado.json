@@ -30,7 +30,7 @@
         "name": "equipamento",
         "label": "Evaporadora",
         "type": "custom",
-        "query": "<HOST_AC09>,<HOST_AC10>,<HOST_AC11>,<HOST_AC12>,<HOST_AC13>,<HOST_AC14>",
+        "query": "<HOST_EV09>,<HOST_EV10>,<HOST_EV11>,<HOST_EV12>,<HOST_EV13>,<HOST_EV14>",
         "multi": true,
         "includeAll": true,
         "current": {

@@ -12,7 +12,7 @@ formato `<PREENCHER>`.
 ## Importar no Zabbix
 
 1. *Data collection → Templates → Import* e selecione o arquivo YAML.
-2. Crie um host por evaporadora (`AC09` a `AC14`) e vincule o template.
+2. Crie um host por evaporadora (`EV09` a `EV14`) e vincule o template.
 3. Ajuste a macro `{$ACUSTICO.CONFIANCA.MIN}` ao patamar desejado.
 4. Configure as ações de notificação com os destinatários da sua equipe.
 

@@ -7,7 +7,7 @@ Registro de coleta, preenchido pela Camada 1 no momento da transferência.
 | Campo | Tipo | Descrição |
 |---|---|---|
 | `arquivo` | texto | nome do `.wav`, relativo à pasta da unidade |
-| `equipamento` | texto | identificador da evaporadora (`AC09` a `AC14`) |
+| `equipamento` | texto | identificador da evaporadora (`EV09` a `EV14`) |
 | `estado` | categórico | `normal`, `anomalia`, `standby` ou `referencia` |
 | `sessao_coleta` | texto | identificador da sessão, no formato `AAAA-MM-DD_HHMM` |
 | `referencia` | texto | arquivo de referência da sessão; vazio quando ausente |

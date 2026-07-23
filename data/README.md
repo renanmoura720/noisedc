@@ -25,11 +25,11 @@ sha256sum -c data/CHECKSUMS.sha256    # verificação de integridade
 
 ```text
 data/raw/
-├── AC09/
+├── EV09/
 │   ├── 2026-03-12_1430_normal.wav
 │   ├── 2026-03-12_1430_referencia.wav
 │   └── metadados.csv
-├── AC10/ ... AC14/
+├── EV10/ ... EV14/
 └── referencia_ruido_fundo/
 ```
 
@@ -41,7 +41,7 @@ data/raw/
 |---|---|---|
 | `arquivo_origem` | texto | caminho relativo do `.wav` que originou o segmento |
 | `indice_segmento` | inteiro | posição do segmento dentro da gravação |
-| `equipamento` | texto | identificador da unidade (AC09–AC14) |
+| `equipamento` | texto | identificador da unidade (EV09–EV14) |
 | `estado` | categórico | `normal`, `anomalia`, `standby` ou `referencia` |
 | `caminho_stft` | texto | espectrograma STFT (`.png`) |
 | `caminho_mel` | texto | espectrograma Mel (`.png`) |

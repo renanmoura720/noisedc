@@ -68,10 +68,10 @@ def gerar(destino: Path, n_unidades: int = 4, seed: int = 42) -> Path:
     destino.mkdir(parents=True, exist_ok=True)
 
     # A anomalia ocorre em poucas unidades, como no conjunto real.
-    unidades_anomalas = {f"AC{9 + n_unidades - 1:02d}", f"AC{9 + n_unidades - 2:02d}"}
+    unidades_anomalas = {f"EV{9 + n_unidades - 1:02d}", f"EV{9 + n_unidades - 2:02d}"}
 
     for i in range(n_unidades):
-        unidade = f"AC{9 + i:02d}"
+        unidade = f"EV{9 + i:02d}"
         pasta = destino / unidade
         pasta.mkdir(parents=True, exist_ok=True)
 

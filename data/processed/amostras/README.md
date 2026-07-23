@@ -9,7 +9,7 @@ Gerados por:
 ```bash
 python scripts/gerar_dados_exemplo.py --destino /tmp/demo
 python -m noisedc.preprocessing.run --entrada /tmp/demo --saida /tmp/demo_proc
-cp /tmp/demo_proc/AC12/*/mfcc/seg0000.npy data/processed/amostras/
+cp /tmp/demo_proc/EV12/*/mfcc/seg0000.npy data/processed/amostras/
 ```
 
 O conjunto completo está no repositório de dados — ver

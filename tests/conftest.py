@@ -60,10 +60,10 @@ def conjunto_sintetico(tmp_path):
 
     raiz = tmp_path / "raw"
     unidades = {
-        "AC09": ["normal", "normal"],
-        "AC10": ["normal", "normal"],
-        "AC11": ["normal", "anomalia"],
-        "AC12": ["normal", "anomalia"],
+        "EV09": ["normal", "normal"],
+        "EV10": ["normal", "normal"],
+        "EV11": ["normal", "anomalia"],
+        "EV12": ["normal", "anomalia"],
     }
 
     for unidade, estados in unidades.items():

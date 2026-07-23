@@ -135,7 +135,7 @@ zabbix_export:
 # -----------------------------------------------------------------------------
 # Depois da importacao, preencher no seu ambiente:
 #
-#   - hosts das evaporadoras                  <HOST_ACxx>
+#   - hosts das evaporadoras                  <HOST_EVxx>
 #   - endereco do servidor Zabbix             <ZABBIX_SERVER>
 #   - acoes de notificacao e destinatarios    <EMAIL_EQUIPE>
 #   - template SNMP das placas de gerencia    <TEMPLATE_SNMP_APC>
