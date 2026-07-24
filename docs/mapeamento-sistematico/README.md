@@ -49,7 +49,7 @@ como uma das contribuições principais do trabalho.
 > artigo declare "repositório público no GitHub". Isso é uma pendência
 > conhecida: idealmente, o README daquele projeto deveria ser atualizado
 > para redirecionar a quem chega pelo artigo até
-> [`github.com/renanmoura720/noisedc`](https://github.com/renanmoura720/noisedc),
+> [`github.com/renan-ppgti/noisedc`](https://github.com/renan-ppgti/noisedc),
 > que é o repositório efetivamente público.
 
 ## Objetivo e questões de pesquisa

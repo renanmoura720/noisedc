@@ -10,11 +10,11 @@ type: software
 authors:
   - given-names: Renan
     family-names: Moura da Silva
-    email: renan.moura@imd.ufrn.br
+    email: SEU-EMAIL@EXEMPLO.COM
     affiliation: Universidade Federal do Rio Grande do Norte
     orcid: 'https://orcid.org/0000-0000-0000-0000'
-repository-code: 'https://github.com/USUARIO/noisedc'
-url: 'https://github.com/USUARIO/noisedc'
+repository-code: 'https://github.com/renan-ppgti/noisedc'
+url: 'https://github.com/renan-ppgti/noisedc'
 abstract: >-
   Arquitetura modular de quatro camadas para monitoramento
   acústico não intrusivo e detecção de anomalias em sistemas
