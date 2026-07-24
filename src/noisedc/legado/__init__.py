@@ -9,8 +9,7 @@ Arquivos:
 ``camada3_autoritativo_linha_c.py``
     O script real, enviado pelo autor e preservado byte-a-byte. Executado
     sobre o features_segmentos.csv real, reproduz exatamente as Tabelas 12,
-    13 e 14 do Capítulo 5 — ver docs/PENDENCIA-hiperparametros-camada3.md
-    para a verificação completa.
+    13 e 14 do Capítulo 5.
 
 ``reconstrucao_camada2_extracao_features.py``
     RECONSTRUÇÃO (não o original). Produz um CSV no mesmo esquema de colunas

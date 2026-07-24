@@ -7,8 +7,7 @@
 # (src/noisedc/legado/camada3_autoritativo_linha_c.py) sobre o
 # features_segmentos.csv real, comparando a saída casa a casa com as Tabelas
 # 12, 13 e 14 do Capítulo 5. Eles DIVERGEM da Tabela 9 do texto da
-# dissertação, que ficou desatualizada. Ver:
-# docs/PENDENCIA-hiperparametros-camada3.md
+# dissertação, que ficou desatualizada.
 heranca: config.example.yaml
 experimento: dissertacao-v1
 data_execucao: '2026-07-15'
