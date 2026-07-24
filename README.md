@@ -10,6 +10,8 @@ Código, documentação e resultados da dissertação de mestrado **"Arquitetura
 
 O trabalho investiga o uso do sinal acústico emitido por evaporadoras de climatização como indicador **complementar, não intrusivo e de baixo custo** de condições anômalas, e propõe uma arquitetura modular de quatro camadas avaliada em ambiente real de produção.
 
+O desenvolvimento deste trabalho apoiou-se em ferramentas de acesso aberto e gratuito, como o Google Colaboratory, e contou com o apoio de assistentes de inteligência artificial na organização do repositório de código e na revisão de trechos de documentação técnica, sempre sob supervisão direta do autor, a quem cabe integralmente a autoria das decisões metodológicas, da análise dos resultados e das conclusões desta dissertação.
+
 > ### 🔗 Links rápidos
 > | | |
 > |---|---|
