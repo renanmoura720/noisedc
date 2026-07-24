@@ -7,7 +7,7 @@ Registro de coleta, preenchido pela Camada 1 no momento da transferência.
 | Campo | Tipo | Descrição |
 |---|---|---|
 | `arquivo` | texto | nome do `.wav`, relativo à pasta da unidade |
-| `equipamento` | texto | identificador da evaporadora (`EV09` a `EV14`) |
+| `equipamento` | texto | identificador da evaporadora (`EV09` a `EV14`) — ver nota de nomenclatura abaixo |
 | `estado` | categórico | `normal`, `anomalia`, `standby` ou `referencia` |
 | `sessao_coleta` | texto | identificador da sessão, no formato `AAAA-MM-DD_HHMM` |
 | `referencia` | texto | arquivo de referência da sessão; vazio quando ausente |
@@ -67,6 +67,27 @@ sem acrescentar informação em um conjunto deste tamanho.
 | `results/metrics/matriz_confusao__<metodo>__<protocolo>.csv` | matriz de confusão acumulada |
 | `results/models/<metodo>.joblib` | modelo treinado sobre todo o conjunto, para a Camada 4 |
 | `results/models/<metodo>.json` | ficha do treinamento: data, composição, semente, atributos mais importantes |
+
+## Nomenclatura das unidades: AC (dissertação) vs. EV (código e dados)
+
+O texto da dissertação refere-se às seis evaporadoras como `AC09` a `AC14`. O
+código e os dados reais deste repositório usam `EV09` a `EV14` (de
+"evaporadora"), que é a convenção interna do dataset produzido pela Camada 2.
+São os **mesmos seis equipamentos físicos** — apenas dois rótulos diferentes
+para a mesma coisa, sem relação de causa entre eles.
+
+| Dissertação | Repositório (código/dados) |
+|---|---|
+| AC09 | EV09 |
+| AC10 | EV10 |
+| AC11 | EV11 |
+| AC12 | EV12 |
+| AC13 | EV13 |
+| AC14 | EV14 |
+
+Ao ler uma tabela ou figura da dissertação e procurar o dado correspondente
+neste repositório (ou vice-versa), use esta tabela para traduzir o
+identificador.
 
 ## Convenção de rótulos
 

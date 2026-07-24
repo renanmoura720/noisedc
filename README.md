@@ -47,6 +47,8 @@ O trabalho investiga o uso do sinal acústico emitido por evaporadoras de climat
 
 **Ambiente experimental:** seis evaporadoras APC InRow RD (EV09–EV14), Corredor C do Data Center do IMD/UFRN.
 
+> **Nota sobre nomenclatura.** O texto da dissertação refere-se às unidades como `AC09`–`AC14`. O código e os dados deste repositório usam `EV09`–`EV14` (evaporadora), a convenção interna do dataset real. São os mesmos seis equipamentos — a correspondência é direta: `AC09`↔`EV09`, `AC10`↔`EV10`, ..., `AC14`↔`EV14`.
+
 **Parâmetros do pipeline:** áudio mono, 22.050 Hz, 16 bits; janelas de 2 s com 50% de sobreposição; `NFFT = 2048`; `hop = 512`; janela de Hann; 128 filtros Mel; 20 MFCC + 20 deltas (40 valores por quadro).
 
 **Métodos comparados:** baseline de limiar único (energia espectral na banda diagnóstica), SVM (RBF, `C = 1,0`, `class_weight = balanced`), Floresta Aleatória (100 árvores) e One-Class SVM (RBF, `ν = 0,5`, treinado apenas com segmentos normais).
